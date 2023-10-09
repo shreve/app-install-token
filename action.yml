@@ -1,0 +1,22 @@
+name: App Install Token
+description: Generate an app installation token for use in other steps
+author: shreve
+
+inputs:
+  app_id:
+    required: true
+    description: "The ID of your GitHub app"
+  installation_id:
+    required: true
+    description: "The ID of the installation of your GitHub app"
+  private_key:
+    required: true
+    description: "A private key for your GitHub app"
+
+outputs:
+  TOKEN:
+    description: "The generated token, valid for 10 minutes"
+
+runs:
+  using: node20
+  main: main.js
