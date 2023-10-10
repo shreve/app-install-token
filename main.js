@@ -13,10 +13,19 @@ async function main() {
     installation_id: installationId,
   });
 
-  const token = response.data.token;
+  const data = response.data;
+  const token = data.token;
+  delete data.token;
 
-  core.exportVariable("TOKEN", token);
-  core.setSecret("TOKEN");
+  core.info(
+    "Returned a token with the following attributes:\n" +
+      JSON.stringify(data, null, 2),
+  );
+
+  core.debug(`The token starts with '${token.slice(0, 10)}'...`);
+
+  core.setOutput("token", token);
+  core.setSecret(token);
 }
 
 main();
