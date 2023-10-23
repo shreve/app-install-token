@@ -12,6 +12,10 @@ inputs:
   private_key:
     required: true
     description: "A private key for your GitHub app"
+  save_credential:
+    required: false
+    default: false
+    description: "Save the token to ~/.git-credentials"
 
 outputs:
   TOKEN:
